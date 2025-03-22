@@ -21,7 +21,7 @@ class Config(object):
     # Array to store users who are authorized to use the bot
     AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS").split())
     # Banned Unwanted Members..
-    BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "false").split())
+    # BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "false").split())
     # the download location, where the HTTP Server runs
     DOWNLOAD_LOCATION = "./DOWNLOADS"
     # Update channel for Force Subscribe
@@ -58,3 +58,11 @@ class Config(object):
     PRO_USERS.append(OWNER_ID)
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", "hi"))
     SCREENSHOTS = os.environ.get("SCREENSHOTS", "True")
+    BANNED_USERS = os.environ.get("BANNED_USERS", "")
+    
+    # اگر متغیر محیطی مقدار نداشت و "false" نبود، آن را تقسیم و به عدد صحیح تبدیل می‌کنیم
+    if banned_users_env and banned_users_env.lower() != "false":
+        BANNED_USERS = set(int(x) for x in banned_users_env.split())
+    else:
+        # اگر مقدار "false" یا خالی باشد، از یک مجموعه خالی استفاده می‌کنیم
+        BANNED_USERS = set()
