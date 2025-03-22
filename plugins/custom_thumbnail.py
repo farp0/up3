@@ -13,7 +13,7 @@ import time
 
 # the Strings used for this "thing"
 from plugins.translation import Translation
-from pyrogram import Client
+from pyrogram import Client, filters 
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
