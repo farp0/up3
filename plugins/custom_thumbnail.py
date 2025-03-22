@@ -34,7 +34,7 @@ from plugins.database.add import add_user_to_database
 from plugins.settings.settings import *
 
 
-@Client.on_message(filters.private & filters.photo & ~filters.update.edited_message)
+@Client.on_message(filters.private & filters.photo & ~filters.edited_message)
 async def photo_handler(bot: Client, event: Message):
     if not event.from_user:
         return await event.reply_text("I don't know about you sar :(")
